@@ -3,10 +3,8 @@
 
 #include "stm32f1xx.h"
 
-/// @brief
-/// @param timer Таймер для инициализации
-/// @param prescaler Предделитель
-/// @param period Значение периода
-void Timer_Init(TIM_TypeDef *timer, uint16_t prescaler, uint16_t period);
+/// @brief Инициализация TIM3
+/// @param frequency Частота
+void TIM3_Init(uint32_t frequency);
 
 #endif // TIMER_H

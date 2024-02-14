@@ -1,23 +1,28 @@
 #include "stm32f1xx.h"
+#include <sysclock.h>
 #include <gpio.h>
 #include <timer.h>
-#include <delay.h>
 
-int main(void) {
-    // Инициализация порта A
-    GPIO_Init(); 
-    // Настройка пина PA5 на вывод
-    GPIO_SetOutput(GPIOA, GPIO_PIN_13); 
+unsigned long TIM3_interrupts = 0;
 
-   
-    while (1) {
-        // Переключение состояния пина PA5
-        GPIOA->BSRR = GPIO_BSRR_BS13; // Переключение состояния пина PA5
+void TIM3_IRQHandler()
+{
+    TIM3->SR &= ~TIM_SR_UIF;
+    TIM3_interrupts++;  // TIM3 interrupts counter
+    GPIO_Toggle_PC13(); // Toggle PC13
+    GPIO_Toggle_PA5();
+}
 
-        // Задержка для демонстрации
-        Delay_ms(1000); // Задержка в 83 микросекунды
-        GPIOA->BRR = GPIO_BRR_BR13;
+int main(void)
+{
+    SystemClock_Config();
+    SystemCoreClockUpdate();
+
+    GPIO_Init_PC13();
+    GPIO_Init_PA5();
+    TIM3_Init(12000); // Initialize TIM3 with 12 kHz frequency
+
+    while (1)
+    {
     }
-
-    Delay_ms(1000);
 }

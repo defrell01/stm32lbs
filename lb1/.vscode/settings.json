@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "timer.h": "c",
-        "delay.h": "c"
+        "delay.h": "c",
+        "gpio.h": "c"
     }
 }

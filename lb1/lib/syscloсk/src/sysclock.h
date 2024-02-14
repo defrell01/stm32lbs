@@ -4,6 +4,6 @@
 #include "stm32f1xx.h"
 
 /// @brief Функция иниициализации системной тактовой частоты
-void SysClock_Init(void);
+void SystemClock_Config(void);
 
 #endif // SYSCLOCK_H
