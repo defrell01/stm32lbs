@@ -20,7 +20,7 @@ int main(void)
 
     GPIO_Init_PC13();
     GPIO_Init_PA5();
-    TIM3_Init(12000); // Initialize TIM3 with 12 kHz frequency
+    TIM3_Init(12000, 3, 0); // Initialize TIM3 with 12 kHz frequency
 
     while (1)
     {

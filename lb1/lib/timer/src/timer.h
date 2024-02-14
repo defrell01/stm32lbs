@@ -3,8 +3,10 @@
 
 #include "stm32f1xx.h"
 
-/// @brief Инициализация TIM3
+/// @brief Функция инициализации таймера TIM3
 /// @param frequency Частота
-void TIM3_Init(uint32_t frequency);
+/// @param prescaler Предделитель
+/// @param duty_cycle Коэффицент заполнения
+void TIM3_Init(uint32_t frequency, uint16_t prescaler, uint16_t duty_cycle);
 
 #endif // TIMER_H
